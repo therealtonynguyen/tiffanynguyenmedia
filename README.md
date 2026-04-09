@@ -17,7 +17,7 @@ Open `http://localhost:5173`.
 2. Add the remote and push:
 
 ```bash
-git remote add origin https://github.com/YOUR_USER/YOUR_REPO.git
+git remote add origin https://github.com/therealtonynguyen/tiffanynguyenmedia.git
 git branch -M main
 git push -u origin main
 ```
