@@ -129,8 +129,18 @@ a {
   height: auto;
   display: block;
   object-fit: contain;
-  /* White-on-black artwork: blends onto red so black reads as shadow */
-  mix-blend-mode: screen;
+}
+
+.brand-lockup__mark--light {
+  display: none;
+}
+
+html[data-theme="light"] .brand-lockup__mark--dark {
+  display: none;
+}
+
+html[data-theme="light"] .brand-lockup__mark--light {
+  display: block;
 }
 
 .site {
@@ -483,7 +493,7 @@ body.modal-open {
 }
 
 [data-theme="light"] .brand-lockup__mark {
-  mix-blend-mode: multiply;
+  /* no-op: light logo is swapped via markup */
 }
 
 [data-theme="light"] .contact-chip:hover,

@@ -35,4 +35,4 @@ git push -u origin main
 ## Files
 
 - `index.html`, `styles.css`, `scroll.js`, `theme.js`, `email-form.js`
-- `assets/logo-tn.png`, `favicon.svg`
+- `assets/logo-dark.png`, `assets/logo-light.png`, `favicon.svg`
