@@ -200,16 +200,25 @@ button.contact-chip {
 .contact-chip__inner {
   display: inline-flex;
   align-items: center;
-  justify-content: flex-start;
-  gap: 0.7rem;
+  justify-content: center;
+  /* No gap while label is collapsed — gap would sit after the icon and pull it left of center */
+  gap: 0;
   min-height: 1.5rem;
 }
 
+.contact-chip:hover .contact-chip__inner,
+.contact-chip:focus-visible .contact-chip__inner {
+  justify-content: flex-start;
+  gap: 0.7rem;
+}
+
 .contact-chip__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font-size: var(--contact-chip-icon-size);
   line-height: 1;
   width: 1.35em;
-  text-align: center;
   flex-shrink: 0;
   opacity: 0.95;
   transition:
@@ -225,7 +234,11 @@ button.contact-chip {
   letter-spacing: 0.06em;
   line-height: 1.3;
   display: inline-block;
+  flex: 0 0 0;
+  min-width: 0;
   max-width: 0;
+  padding: 0;
+  margin: 0;
   opacity: 0;
   overflow: hidden;
   visibility: hidden;
@@ -247,6 +260,7 @@ button.contact-chip {
 
 .contact-chip:hover .contact-chip__text,
 .contact-chip:focus-visible .contact-chip__text {
+  flex: 0 1 auto;
   max-width: 22rem;
   opacity: 1;
   visibility: visible;
@@ -272,7 +286,13 @@ button.contact-chip {
     transform: none;
   }
 
+  .contact-chip__inner {
+    justify-content: flex-start;
+    gap: 0.7rem;
+  }
+
   .contact-chip__text {
+    flex: 0 1 auto;
     max-width: 22rem;
     opacity: 1;
     visibility: visible;
@@ -285,7 +305,13 @@ button.contact-chip {
 }
 
 @media (hover: none) {
+  .contact-chip__inner {
+    justify-content: flex-start;
+    gap: 0.7rem;
+  }
+
   .contact-chip__text {
+    flex: 0 1 auto;
     max-width: 22rem;
     opacity: 1;
     visibility: visible;

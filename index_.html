@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script>
+      try {
+        if (localStorage.getItem("tiffanynguyenmedia-theme") === "light") {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      } catch (e) {}
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Tiffany Nguyen — Intentionally Made." />
+    <title>Tiffany Nguyen — Intentionally Made</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="icon" href="./assets/logo-dark.png" type="image/png" />
+  </head>
+  <body>
+    <a class="skip-link" href="#contact">Skip to contact</a>
+
+    <div class="logo-layer" id="logoLayer">
+      <div class="brand-lockup">
+        <h1 class="sr-only">Tiffany Nguyen Media</h1>
+        <img
+          class="brand-lockup__mark brand-lockup__mark--dark"
+          src="./assets/logo-dark.png"
+          width="640"
+          height="640"
+          alt=""
+          decoding="async"
+          aria-hidden="true"
+        />
+        <img
+          class="brand-lockup__mark brand-lockup__mark--light"
+          src="./assets/logo-light.png"
+          width="640"
+          height="640"
+          alt=""
+          decoding="async"
+          aria-hidden="true"
+        />
+      </div>
+    </div>
+
+    <main id="main" class="site">
+      <div class="scroll-spacer" aria-hidden="true"></div>
+      <section class="contact" id="contact" aria-label="Contact">
+        <nav class="contact-links">
+          <button
+            type="button"
+            class="contact-chip"
+            id="openEmailForm"
+            aria-label="Email: contact@tiffanynguyenmedia.com. Opens message form."
+            aria-haspopup="dialog"
+            aria-controls="emailDialog"
+          >
+            <span class="contact-chip__inner">
+              <i class="fa-solid fa-envelope contact-chip__icon" aria-hidden="true"></i>
+              <span class="contact-chip__text">contact@tiffanynguyenmedia.com</span>
+            </span>
+          </button>
+          <a
+            class="contact-chip"
+            href="https://instagram.com/tiffanynguyenmedia"
+            rel="noopener noreferrer"
+            target="_blank"
+            aria-label="Instagram: @tiffanynguyenmedia"
+          >
+            <span class="contact-chip__inner">
+              <i class="fa-brands fa-instagram contact-chip__icon" aria-hidden="true"></i>
+              <span class="contact-chip__text">@tiffanynguyenmedia</span>
+            </span>
+          </a>
+          <button
+            type="button"
+            class="contact-chip theme-toggle"
+            id="themeToggle"
+            aria-pressed="false"
+            aria-label="Switch to light mode"
+          >
+            <span class="contact-chip__inner">
+              <i
+                class="fa-solid fa-sun contact-chip__icon theme-toggle__icon"
+                id="themeToggleIcon"
+                aria-hidden="true"
+              ></i>
+              <span class="contact-chip__text" id="themeToggleText">Light mode</span>
+            </span>
+          </button>
+        </nav>
+      </section>
+    </main>
+
+    <div class="modal-root" id="emailModal" hidden>
+      <div class="modal-backdrop" data-modal-dismiss tabindex="-1" aria-hidden="true"></div>
+      <div
+        class="modal-dialog"
+        id="emailDialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="emailDialogTitle"
+      >
+        <button type="button" class="modal-close" data-modal-dismiss aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h2 class="modal-title" id="emailDialogTitle">Email</h2>
+        <form
+          class="email-form"
+          id="emailForm"
+          action="https://formspree.io/f/xaqlzyde"
+          method="POST"
+          novalidate
+        >
+          <input
+            type="hidden"
+            name="_subject"
+            value="Message from tiffanynguyen.media"
+          />
+          <p
+            class="email-form__status"
+            id="emailFormStatus"
+            hidden
+            role="status"
+            aria-live="polite"
+          ></p>
+          <label class="field">
+            <span class="field__label">Your name</span>
+            <input
+              class="field__input"
+              type="text"
+              name="name"
+              id="emailName"
+              autocomplete="name"
+            />
+          </label>
+          <label class="field">
+            <span class="field__label">Your email</span>
+            <input
+              class="field__input"
+              type="email"
+              name="email"
+              id="emailFrom"
+              autocomplete="email"
+              required
+            />
+          </label>
+          <label class="field">
+            <span class="field__label">Message</span>
+            <textarea
+              class="field__input field__input--textarea"
+              name="message"
+              id="emailMessage"
+              rows="5"
+              required
+            ></textarea>
+          </label>
+          <div class="email-form__actions">
+            <button type="submit" class="email-form__submit">Send</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="./theme.js" defer></script>
+    <script src="./scroll.js" defer></script>
+    <script src="./email-form.js" defer></script>
+  </body>
+</html>

@@ -10,9 +10,10 @@
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Tiffany Nguyen — Intentionally Made." />
-    <title>Tiffany Nguyen — Intentionally Made</title>
+    <meta name="description" content="Tiffany Nguyen — Portfolio" />
+    <title>Portfolio — Tiffany Nguyen Media</title>
     <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./portfolio.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -21,35 +22,209 @@
     />
     <link rel="icon" href="./assets/logo-dark.png" type="image/png" />
   </head>
-  <body>
-    <a class="skip-link" href="#contact">Skip to contact</a>
+  <body class="portfolio-body">
+    <div id="page-top" class="portfolio-page-top" tabindex="-1" aria-label="Top of page"></div>
+    <a class="skip-link" href="#portfolio-main">Skip to portfolio</a>
 
-    <div class="logo-layer" id="logoLayer">
-      <div class="brand-lockup">
-        <h1 class="sr-only">Tiffany Nguyen Media</h1>
-        <img
-          class="brand-lockup__mark brand-lockup__mark--dark"
-          src="./assets/logo-dark.png"
-          width="640"
-          height="640"
-          alt=""
-          decoding="async"
-          aria-hidden="true"
-        />
-        <img
-          class="brand-lockup__mark brand-lockup__mark--light"
-          src="./assets/logo-light.png"
-          width="640"
-          height="640"
-          alt=""
-          decoding="async"
-          aria-hidden="true"
-        />
-      </div>
+    <div class="portfolio-hero" id="portfolioHero" aria-hidden="true">
+      <img
+        class="portfolio-hero__img"
+        src="./assets/images/portfolio-logo.png"
+        width="1040"
+        height="1040"
+        alt=""
+        decoding="async"
+      />
     </div>
 
-    <main id="main" class="site">
-      <div class="scroll-spacer" aria-hidden="true"></div>
+    <main id="portfolio-main" class="portfolio-main">
+      <div class="portfolio-scroll-spacer" aria-hidden="true"></div>
+
+      <h1 class="sr-only">Portfolio</h1>
+
+      <section class="portfolio-section" id="branding" data-reveal>
+        <div class="portfolio-section__inner">
+          <div class="portfolio-section__content">
+            <div class="portfolio-section__head">
+              <h2 class="portfolio-section__title">BRANDING</h2>
+              <p class="portfolio-section__lede">
+                “Branding is a disciplined process used to build awareness and extend customer loyalty.”<br/>- Alina Wheeler
+              </p>
+            </div>
+            <div class="portfolio-gallery" aria-label="Branding project thumbnails">
+              <figure class="portfolio-tile">
+                <div class="portfolio-tile__face"><span class="portfolio-tile__placeholder"><img src="./assets/portfolio/brand-01.png" alt="Branding: 1" width="250" height="250" /></span></div>
+              </figure>
+              <figure class="portfolio-tile">
+                <div class="portfolio-tile__face"><span class="portfolio-tile__placeholder"><img src="./assets/portfolio/brand-02.png" alt="Branding: 2" width="250" height="250" /></span></div>
+              </figure>
+              <figure class="portfolio-tile">
+                <div class="portfolio-tile__face"><span class="portfolio-tile__placeholder"><img src="./assets/portfolio/brand-03.png" alt="Branding: 3" width="250" height="250" /></span></div>
+              </figure>
+              <figure class="portfolio-tile">
+                <div class="portfolio-tile__face"><span class="portfolio-tile__placeholder"><img src="./assets/portfolio/brand-04.png" alt="Branding: 4" width="250" height="250" /></span></div>
+              </figure>
+              <figure class="portfolio-tile">
+                <div class="portfolio-tile__face"><span class="portfolio-tile__placeholder"><img src="./assets/portfolio/brand-05.png" alt="Branding: 5" width="250" height="250" /></span></div>
+              </figure>
+            </div>
+          </div>
+          <div class="portfolio-section__next">
+            <button
+              type="button"
+              class="contact-chip portfolio-scroll-chip"
+              data-scroll-to-section="#campaign"
+              aria-label="Next section: Campaign"
+            >
+              <span class="contact-chip__inner">
+                <i class="fa-solid fa-arrow-down contact-chip__icon" aria-hidden="true"></i>
+                <span class="contact-chip__text">Next</span>
+              </span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="portfolio-section" id="campaign" data-reveal>
+        <div class="portfolio-section__inner">
+          <div class="portfolio-section__content">
+            <div class="portfolio-section__head">
+              <h2 class="portfolio-section__title">CAMPAIGN</h2>
+              <p class="portfolio-section__lede">
+                “A coordinated series of activities designed to promote a product, service, or idea.”<br/>- Philip Kotler
+              </p>
+            </div>
+            <div class="portfolio-gallery" aria-label="Campaign project thumbnails">
+              <figure class="portfolio-tile">
+                <div class="portfolio-tile__face"><span class="portfolio-tile__placeholder"><img src="./assets/portfolio/campaign-01.png" alt="Campaign: 1" width="250" height="250" /></span></div>
+              </figure>
+              <figure class="portfolio-tile">
+                <div class="portfolio-tile__face"><span class="portfolio-tile__placeholder"><img src="./assets/portfolio/campaign-02.png" alt="Campaign: 2" width="250" height="250" /></span></div>
+              </figure>
+            </div>
+          </div>
+          <div class="portfolio-section__next">
+            <button
+              type="button"
+              class="contact-chip portfolio-scroll-chip"
+              data-scroll-to-section="#publication"
+              aria-label="Next section: Publication"
+            >
+              <span class="contact-chip__inner">
+                <i class="fa-solid fa-arrow-down contact-chip__icon" aria-hidden="true"></i>
+                <span class="contact-chip__text">Next</span>
+              </span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="portfolio-section" id="publication" data-reveal>
+        <div class="portfolio-section__inner">
+          <div class="portfolio-section__content">
+            <div class="portfolio-section__head">
+              <h2 class="portfolio-section__title">PUBLICATION</h2>
+              <p class="portfolio-section__lede">
+                “A printed work which cannot be read becomes a product without purpose.”<br/>- Jan Tschichold
+              </p>
+            </div>
+            <div class="portfolio-gallery" aria-label="Publication project thumbnails">
+              <figure class="portfolio-tile">
+                <div class="portfolio-tile__face"><span class="portfolio-tile__placeholder"><img src="./assets/portfolio/publication-01.png" alt="Publication: 1" width="250" height="250" /></span></div>
+              </figure>
+            </div>
+          </div>
+          <div class="portfolio-section__next">
+            <button
+              type="button"
+              class="contact-chip portfolio-scroll-chip"
+              data-scroll-to-section="#film"
+              aria-label="Next section: Film"
+            >
+              <span class="contact-chip__inner">
+                <i class="fa-solid fa-arrow-down contact-chip__icon" aria-hidden="true"></i>
+                <span class="contact-chip__text">Next</span>
+              </span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="portfolio-section" id="film" data-reveal>
+        <div class="portfolio-section__inner">
+          <div class="portfolio-section__content">
+            <div class="portfolio-section__head">
+              <h2 class="portfolio-section__title">Film</h2>
+              <p class="portfolio-section__lede">
+                “Passion is not something you find, it's something you cultivate.”<br/>- Brené Brown
+              </p>
+            </div>
+            <div class="portfolio-gallery" aria-label="Film project thumbnails">
+              <figure class="portfolio-tile">
+                <div class="portfolio-tile__face"><span class="portfolio-tile__placeholder"><img src="./assets/portfolio/film-01.png" alt="Film: 1" width="250" height="250" /></span></div>
+              </figure>
+              <figure class="portfolio-tile">
+                <div class="portfolio-tile__face"><span class="portfolio-tile__placeholder"><img src="./assets/portfolio/film-02.png" alt="Film: 2" width="250" height="250" /></span></div>
+              </figure>
+              <figure class="portfolio-tile">
+                <div class="portfolio-tile__face"><span class="portfolio-tile__placeholder"><img src="./assets/portfolio/film-03.png" alt="Film: 3" width="250" height="250" /></span></div>
+              </figure>
+              <figure class="portfolio-tile">
+                <div class="portfolio-tile__face"><span class="portfolio-tile__placeholder"><img src="./assets/portfolio/film-04.png" alt="Film: 4" width="250" height="250" /></span></div>
+              </figure>
+              <figure class="portfolio-tile">
+                <div class="portfolio-tile__face"><span class="portfolio-tile__placeholder"><img src="./assets/portfolio/film-05.png" alt="Film: 5" width="250" height="250" /></span></div>
+              </figure>
+            </div>
+          </div>
+          <div class="portfolio-section__next">
+            <button
+              type="button"
+              class="contact-chip portfolio-scroll-chip"
+              data-scroll-to-section="#marketing"
+              aria-label="Next section: Marketing"
+            >
+              <span class="contact-chip__inner">
+                <i class="fa-solid fa-arrow-down contact-chip__icon" aria-hidden="true"></i>
+                <span class="contact-chip__text">Next</span>
+              </span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="portfolio-section" id="marketing" data-reveal>
+        <div class="portfolio-section__inner">
+          <div class="portfolio-section__content">
+            <div class="portfolio-section__head">
+              <h2 class="portfolio-section__title">Marketing</h2>
+              <p class="portfolio-section__lede">
+                “Marketing is the act of telling stories about things we make...stories that sell and stories that spread.”<br/>- Seth Godin
+              </p>
+            </div>
+            <div class="portfolio-gallery" aria-label="Marketing project thumbnails">
+              <figure class="portfolio-tile">
+                <div class="portfolio-tile__face"><span class="portfolio-tile__placeholder"><img src="./assets/portfolio/marketing-01.png" alt="Marketing: 1" width="250" height="250" /></span></div>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="portfolio-footer">
+        <button
+          type="button"
+          class="contact-chip portfolio-scroll-chip"
+          id="scrollToTop"
+          aria-label="Back to top"
+        >
+          <span class="contact-chip__inner">
+            <i class="fa-solid fa-arrow-up contact-chip__icon" aria-hidden="true"></i>
+            <span class="contact-chip__text">Top</span>
+          </span>
+        </button>
+      </footer>
+
       <section class="contact" id="contact" aria-label="Contact">
         <nav class="contact-links">
           <button
@@ -167,8 +342,9 @@
       </div>
     </div>
 
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js" defer></script>
     <script src="./theme.js" defer></script>
-    <script src="./scroll.js" defer></script>
+    <script src="./portfolio.js" defer></script>
     <script src="./email-form.js" defer></script>
   </body>
 </html>

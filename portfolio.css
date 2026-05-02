@@ -1,0 +1,270 @@
+/* Portfolio page — extends styles.css (variables, fonts, theme) */
+
+.portfolio-body {
+  --portfolio-copy: #ce9d97;
+  min-height: 100%;
+}
+
+.portfolio-page-top {
+  position: relative;
+  height: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+.portfolio-hero {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  pointer-events: none;
+  will-change: transform, opacity;
+  background-color: var(--page-bg);
+  transition: background-color var(--theme-duration) var(--theme-ease);
+}
+
+.portfolio-hero__img {
+  /* At least half the viewport width; scales up, capped so it stays in frame */
+  width: clamp(50vw, 88vw, min(1600px, 94vw));
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.portfolio-main {
+  position: relative;
+  z-index: 2;
+}
+
+.portfolio-scroll-spacer {
+  height: 130vh;
+}
+
+.portfolio-section {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  align-items: stretch;
+  box-sizing: border-box;
+  padding: clamp(48px, 7vh, 88px) clamp(20px, 4vw, 48px) clamp(64px, 10vh, 120px);
+  margin-bottom: clamp(48px, 12vh, 140px);
+  background-color: color-mix(in srgb, var(--beige) 8%, var(--page-bg));
+  transition: background-color var(--theme-duration) var(--theme-ease);
+  scroll-margin-top: 24px;
+  will-change: transform, opacity;
+}
+
+[data-theme="light"] .portfolio-section {
+  background-color: color-mix(in srgb, var(--beige) 35%, #fff);
+}
+
+.portfolio-section:last-of-type {
+  margin-bottom: clamp(32px, 8vh, 96px);
+}
+
+.portfolio-section__inner {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  /* Five 252px tiles + gaps; widen so one row fits without wrapping (breakpoints later) */
+  max-width: min(1340px, 100%);
+  margin: 0 auto;
+  text-align: center;
+  min-height: 0;
+}
+
+.portfolio-section__content {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 0;
+}
+
+.portfolio-section__next {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(28px, 5vh, 56px);
+  padding-bottom: clamp(4px, 1.5vh, 16px);
+}
+
+button.contact-chip.portfolio-scroll-chip {
+  pointer-events: auto;
+}
+
+.portfolio-section__head {
+  opacity: 0;
+  transform: translate3d(0, 40px, 0) scale(0.98);
+  transition:
+    opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.portfolio-section.is-visible .portfolio-section__head {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-section {
+    will-change: auto;
+  }
+
+  .portfolio-section__head {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .portfolio-hero {
+    will-change: auto;
+  }
+
+  .portfolio-tile__face {
+    will-change: auto;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+.portfolio-section__title {
+  margin: 0 0 0.65rem;
+  font-family: "Playfair Display", ui-serif, Georgia, serif;
+  font-weight: 600;
+  font-size: clamp(1.75rem, 4.2vw, 2.5rem);
+  letter-spacing: 0.04em;
+  line-height: 1.15;
+  color: var(--portfolio-copy);
+}
+
+.portfolio-section__lede {
+  margin: 0 auto 2.5rem;
+  max-width: 100%;
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--portfolio-copy);
+  white-space: nowrap;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+}
+
+.portfolio-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: clamp(12px, 1.5vw, 20px);
+  width: 100%;
+  max-width: 100%;
+  perspective: 1400px;
+  perspective-origin: 50% 92%;
+  transform-style: preserve-3d;
+}
+
+.portfolio-tile {
+  position: relative;
+  margin: 0;
+  flex: 0 1 252px;
+  width: 252px;
+  max-width: 100%;
+  aspect-ratio: 1;
+  height: auto;
+  box-sizing: border-box;
+  border-radius: 8px;
+  overflow: visible;
+  transform-style: preserve-3d;
+}
+
+.portfolio-tile__face {
+  position: absolute;
+  inset: 0;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 1px solid rgba(206, 157, 151, 0.65);
+  background: rgba(0, 0, 0, 0.22);
+  transform-origin: bottom center;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+  transition:
+    border-color var(--theme-duration) var(--theme-ease),
+    background-color var(--theme-duration) var(--theme-ease);
+}
+
+[data-theme="light"] .portfolio-tile__face {
+  background: rgba(255, 255, 255, 0.5);
+  border-color: rgba(206, 157, 151, 0.75);
+}
+
+.portfolio-tile__placeholder {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--portfolio-copy);
+  padding: 8px;
+  text-align: center;
+}
+
+.portfolio-tile__placeholder:has(img) {
+  padding: 0;
+  line-height: 0;
+}
+
+.portfolio-tile__face img {
+  width: 250px;
+  height: 250px;
+  max-width: calc(100% - 2px);
+  max-height: calc(100% - 2px);
+  object-fit: contain;
+  display: block;
+  border-radius: 6px;
+}
+
+.portfolio-footer {
+  padding: 48px 24px 80px;
+  text-align: center;
+}
+
+/* Contact strip matches index.html; scroll.js is not loaded here, so show it outright */
+body.portfolio-body .contact {
+  opacity: 1;
+  transform: none;
+  will-change: auto;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .portfolio-tile__face {
+    opacity: 0.22;
+    transform: translate3d(0, 36px, 0) rotateX(86deg) translateZ(2px);
+  }
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
