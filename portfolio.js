@@ -5,6 +5,12 @@
   var scrollToTopBtn = document.getElementById("scrollToTop");
   var sections = document.querySelectorAll(".portfolio-section[data-reveal]");
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  /* No scroll-linked dimming at tablet widths and below (phones + iPad; desktop stays > 1024). */
+  var portfolioNoScrollDimMql = window.matchMedia("(max-width: 1024px)");
+
+  function portfolioSkipScrollDim() {
+    return portfolioNoScrollDimMql.matches;
+  }
 
   function clamp(n, min, max) {
     return Math.min(max, Math.max(min, n));
@@ -35,7 +41,7 @@
 
   /** Scroll-scrubbed “fold from bottom” on gallery faces (rotateX + slight lift). */
   function updateGalleryFolds() {
-    if (reduceMotion) return;
+    if (reduceMotion || portfolioSkipScrollDim()) return;
 
     var galleries = document.querySelectorAll(".portfolio-gallery");
     var vh = window.innerHeight || 1;
@@ -71,6 +77,15 @@
   /** As a section scrolls up past the top edge, fade and shrink it away. */
   function updateSectionExit() {
     if (reduceMotion) {
+      sections.forEach(function (section) {
+        section.style.opacity = "";
+        section.style.transform = "";
+        section.style.transformOrigin = "";
+      });
+      return;
+    }
+
+    if (portfolioSkipScrollDim()) {
       sections.forEach(function (section) {
         section.style.opacity = "";
         section.style.transform = "";

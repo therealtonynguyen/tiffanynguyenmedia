@@ -256,6 +256,25 @@ body.portfolio-body .contact {
   }
 }
 
+/* Tablet and below: no scroll-away fade on sections, no folded / dimmed tiles */
+@media (max-width: 1024px) {
+  .portfolio-section {
+    opacity: 1 !important;
+    transform: none !important;
+    will-change: auto;
+  }
+
+  .portfolio-tile__face {
+    opacity: 1 !important;
+    transform: none !important;
+    will-change: auto;
+  }
+
+  .portfolio-gallery {
+    perspective: none;
+  }
+}
+
 html.lenis,
 html.lenis body {
   height: auto;
