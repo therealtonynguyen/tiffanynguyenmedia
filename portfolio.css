@@ -256,8 +256,13 @@ body.portfolio-body .contact {
   }
 }
 
-/* Tablet and below: no scroll-away fade on sections, no folded / dimmed tiles */
-@media (max-width: 1024px) {
+/*
+ * No scroll-away fade on sections, no folded / dimmed tiles:
+ * — media: narrow viewports + coarse pointer (touch)
+ * — html.portfolio-skip-scroll-fx: set by portfolio.js for wide “desktop” layouts on phones
+ *   (in-app browsers, request-desktop, etc.) where inline scroll styles would still dim content.
+ */
+@media (max-width: 1024px), (pointer: coarse) {
   .portfolio-section {
     opacity: 1 !important;
     transform: none !important;
@@ -273,6 +278,22 @@ body.portfolio-body .contact {
   .portfolio-gallery {
     perspective: none;
   }
+}
+
+html.portfolio-skip-scroll-fx .portfolio-section {
+  opacity: 1 !important;
+  transform: none !important;
+  will-change: auto;
+}
+
+html.portfolio-skip-scroll-fx .portfolio-tile__face {
+  opacity: 1 !important;
+  transform: none !important;
+  will-change: auto;
+}
+
+html.portfolio-skip-scroll-fx .portfolio-gallery {
+  perspective: none;
 }
 
 html.lenis,

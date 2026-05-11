@@ -5,11 +5,32 @@
   var scrollToTopBtn = document.getElementById("scrollToTop");
   var sections = document.querySelectorAll(".portfolio-section[data-reveal]");
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  /* No scroll-linked dimming at tablet widths and below (phones + iPad; desktop stays > 1024). */
-  var portfolioNoScrollDimMql = window.matchMedia("(max-width: 1024px)");
+  /**
+   * Skip scroll-scrubbed dimming / folds for touch layouts and common “phone” cases.
+   * Width alone misses desktop-mode / in-app browsers; coarse pointer + hover:none catches those.
+   */
+  var portfolioWideTouchMql = window.matchMedia(
+    "(max-width: 1024px), (pointer: coarse)"
+  );
 
   function portfolioSkipScrollDim() {
-    return portfolioNoScrollDimMql.matches;
+    if (portfolioWideTouchMql.matches) return true;
+    try {
+      return (
+        typeof navigator !== "undefined" &&
+        navigator.maxTouchPoints > 0 &&
+        window.matchMedia("(hover: none)").matches
+      );
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function syncPortfolioSkipScrollFxClass() {
+    document.documentElement.classList.toggle(
+      "portfolio-skip-scroll-fx",
+      portfolioSkipScrollDim()
+    );
   }
 
   function clamp(n, min, max) {
@@ -41,7 +62,15 @@
 
   /** Scroll-scrubbed “fold from bottom” on gallery faces (rotateX + slight lift). */
   function updateGalleryFolds() {
-    if (reduceMotion || portfolioSkipScrollDim()) return;
+    if (reduceMotion || portfolioSkipScrollDim()) {
+      if (!reduceMotion && portfolioSkipScrollDim()) {
+        document.querySelectorAll(".portfolio-tile__face").forEach(function (face) {
+          face.style.opacity = "";
+          face.style.transform = "";
+        });
+      }
+      return;
+    }
 
     var galleries = document.querySelectorAll(".portfolio-gallery");
     var vh = window.innerHeight || 1;
@@ -122,6 +151,7 @@
   }
 
   function raf(time) {
+    syncPortfolioSkipScrollFxClass();
     if (lenis) {
       lenis.raf(time);
       updateHero(lenis.scroll);
@@ -132,6 +162,10 @@
     updateSectionExit();
     requestAnimationFrame(raf);
   }
+
+  syncPortfolioSkipScrollFxClass();
+  portfolioWideTouchMql.addEventListener("change", syncPortfolioSkipScrollFxClass);
+  window.addEventListener("resize", syncPortfolioSkipScrollFxClass);
 
   requestAnimationFrame(raf);
 
